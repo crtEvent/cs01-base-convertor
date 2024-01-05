@@ -27,8 +27,10 @@ class ConvertorTest {
         var decimal_more = 256;
 
         assertAll(
-            () -> assertThrows(IllegalArgumentException.class, () -> convertor.dec2bin(decimal_less)),
-            () -> assertThrows(IllegalArgumentException.class, () -> convertor.dec2bin(decimal_more))
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> convertor.dec2bin(decimal_less)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> convertor.dec2bin(decimal_more))
         );
     }
 
@@ -41,5 +43,30 @@ class ConvertorTest {
         int actualDecimal = convertor.bin2dec(binary);
 
         assertEquals(expectedDecimal, actualDecimal);
+    }
+
+    @Test
+    @DisplayName("문자열 형태의 이진수를 boolean 배열로 변환할 수 있다.")
+    void string2bin_success() {
+        var stringBinary = "0b1100";
+        var expectedBinary = new boolean[]{false, false, true, true};
+
+        var actualBinary = convertor.string2bin(stringBinary);
+
+        assertArrayEquals(expectedBinary, actualBinary);
+    }
+
+    @Test
+    @DisplayName("잘못된 포맷의 문자열 이진수는 boolean 배열로 변환할 수 없다.")
+    void string2bin_fail() {
+        var stringBinary1 = "1100";
+        var stringBinary2 = "0b11abc00";
+
+        assertAll(
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> convertor.string2bin(stringBinary1)),
+            () -> assertThrows(IllegalArgumentException.class,
+                () -> convertor.string2bin(stringBinary2))
+        );
     }
 }
