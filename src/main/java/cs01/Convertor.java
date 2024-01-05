@@ -22,4 +22,13 @@ public class Convertor {
         return binary;
     }
 
+    public int bin2dec(boolean[] binary) {
+        int decimal = 0;
+        for (int i = 0; i < binary.length; i++) {
+            decimal += (binary[i] ? 1 : 0) * (int) Math.pow(2, i);
+        }
+
+        return decimal;
+    }
+
 }
