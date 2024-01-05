@@ -31,4 +31,15 @@ class ConvertorTest {
             () -> assertThrows(IllegalArgumentException.class, () -> convertor.dec2bin(decimal_more))
         );
     }
+
+    @Test
+    @DisplayName("이진수를 십진수 정수로 변환할 수 있다")
+    void bin2dec_success() {
+        var binary = new boolean[]{true, true, false, false, false, true};
+        int expectedDecimal = 35;
+
+        int actualDecimal = convertor.bin2dec(binary);
+
+        assertEquals(expectedDecimal, actualDecimal);
+    }
 }
