@@ -31,4 +31,24 @@ public class Convertor {
         return decimal;
     }
 
+    public boolean[] string2bin(String binaryStr) {
+        if (!binaryStr.startsWith("0b")) {
+            throw new IllegalArgumentException(binaryStr + "는 이진수가 아닙니다.");
+        }
+
+        var binary = new boolean[binaryStr.length() - 2];
+        for (var i = 0; i < binary.length; i++) {
+            var charAt = binaryStr.charAt(binaryStr.length() - 1 - i);
+            if (charAt == '1') {
+                binary[i] = true;
+            } else if (charAt == '0') {
+                binary[i] = false;
+            } else {
+                throw new IllegalArgumentException(binaryStr + "는 이진수가 아닙니다.");
+            }
+        }
+
+        return binary;
+    }
+
 }
