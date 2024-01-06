@@ -51,4 +51,17 @@ public class Convertor {
         return binary;
     }
 
+    public String bin2String(boolean[] binary) {
+        if (binary.length == 0) {
+            return "0b0";
+        }
+
+        StringBuilder builder = new StringBuilder("0b");
+        for (boolean digit : binary) {
+            builder.insert(2, digit ? "1" : "0");
+        }
+
+        return builder.toString();
+    }
+
 }
