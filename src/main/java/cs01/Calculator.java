@@ -24,6 +24,7 @@ public class Calculator {
         }
 
         // 이진수 덧셈 결과의 맨 앞자리 수가 false인 경우 맨 앞 자리를 제거한다.
+        // 맨 앞자리가 0인 경우 표시할 필요가 없기 때문이다.
         if (!sumResult[sumResult.length - 1]) {
             sumResult = Arrays.copyOf(sumResult, sumResult.length - 1);
         }
