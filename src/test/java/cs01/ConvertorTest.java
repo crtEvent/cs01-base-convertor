@@ -69,4 +69,26 @@ class ConvertorTest {
                 () -> convertor.string2bin(stringBinary2))
         );
     }
+
+    @Test
+    @DisplayName("이진수 배열을 문자열로 변환할 수 있다.")
+    void bin2String_success() {
+        var binary = new boolean[]{false, false, true};
+        var expectedStringBinary = "0b100";
+
+        var actualStringBinary = convertor.bin2String(binary);
+
+        assertEquals(expectedStringBinary, actualStringBinary);
+    }
+
+    @Test
+    @DisplayName("이진수 배열을 문자열로 변환할 때 빈 이진수 배열은 0으로 식별한다.")
+    void bin2String_success_empty_array() {
+        var binary = new boolean[]{};
+        var expectedStringBinary = "0b0";
+
+        var actualStringBinary = convertor.bin2String(binary);
+
+        assertEquals(expectedStringBinary, actualStringBinary);
+    }
 }
