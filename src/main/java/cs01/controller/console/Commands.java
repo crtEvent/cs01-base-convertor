@@ -1,4 +1,4 @@
-package cs01;
+package cs01.controller.console;
 
 public class Commands {
     public static final String DEC_2_BIN = "dec2bin";

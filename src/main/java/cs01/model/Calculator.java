@@ -1,4 +1,4 @@
-package cs01;
+package cs01.model;
 
 import java.util.Arrays;
 

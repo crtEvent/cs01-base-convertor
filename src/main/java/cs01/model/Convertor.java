@@ -1,4 +1,4 @@
-package cs01;
+package cs01.model;
 
 public class Convertor {
 

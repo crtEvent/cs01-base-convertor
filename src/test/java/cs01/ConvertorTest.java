@@ -2,6 +2,7 @@ package cs01;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import cs01.model.Convertor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

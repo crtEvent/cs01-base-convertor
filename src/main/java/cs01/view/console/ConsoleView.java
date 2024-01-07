@@ -1,4 +1,4 @@
-package cs01;
+package cs01.view.console;
 
 import java.io.BufferedReader;
 import java.io.IOException;
