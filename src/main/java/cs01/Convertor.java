@@ -2,6 +2,14 @@ package cs01;
 
 public class Convertor {
 
+    public int string2int(String stringNumber) {
+        try {
+            return Integer.parseInt(stringNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(stringNumber + "는 정수가 아닙니다.");
+        }
+    }
+
     public boolean[] dec2bin(int decimal) {
         if (decimal < 0 || decimal > 255) {
             throw new IllegalArgumentException("0~255까지의 정수만 입력할 수 있습니다.");
