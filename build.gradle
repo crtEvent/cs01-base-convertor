@@ -14,7 +14,7 @@ repositories {
 
 application {
     mainModule = 'cs01'
-    mainClass = 'cs01.HelloApplication'
+    mainClass = 'cs01.FxApplication'
 }
 
 javafx {
