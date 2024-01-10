@@ -1,7 +1,6 @@
 package cs01.controller.javafx;
 
 import cs01.model.BaseJobProcessor;
-import cs01.model.BaseValidator;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,8 +13,7 @@ import javafx.stage.Stage;
 
 public class FxCalculatorController implements Initializable {
 
-    private final BaseValidator baseValidator = new BaseValidator();
-    private final BaseJobProcessor baseJobProcessor = new BaseJobProcessor();
+    private BaseJobProcessor baseJobProcessor;
 
     @FXML
     private VBox rootContainer;
@@ -28,6 +26,10 @@ public class FxCalculatorController implements Initializable {
     @FXML
     private Label errorMessageLabel;
 
+    public void setBaseJobProcessor(BaseJobProcessor baseJobProcessor) {
+        this.baseJobProcessor = baseJobProcessor;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -37,7 +39,7 @@ public class FxCalculatorController implements Initializable {
                 String param2Value = param2.textProperty().get();
 
                 try {
-                    baseValidator.validateStringBinary(newValue);
+                    baseJobProcessor.callValidateStringBinary(newValue);
 
                     if (param2Value.isEmpty()) {
                         result.setText("");
@@ -58,7 +60,7 @@ public class FxCalculatorController implements Initializable {
                 String param1Value = param1.textProperty().get();
 
                 try {
-                    baseValidator.validateStringBinary(newValue);
+                    baseJobProcessor.callValidateStringBinary(newValue);
 
                     if (param1Value.isEmpty()) {
                         result.setText("");

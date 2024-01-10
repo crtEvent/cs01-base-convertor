@@ -13,9 +13,9 @@ public class ConsoleController {
     private static final Function<String, String> COMMAND_ERROR_MESSAGE = (String command)
         -> String.format("'%s'는 잘못된 명령어 입니다.", command);
 
-    public ConsoleController() {
-        this.baseJobProcessor = new BaseJobProcessor();
-        this.view = new ConsoleView();
+    public ConsoleController(BaseJobProcessor baseJobProcessor, ConsoleView view) {
+        this.baseJobProcessor = baseJobProcessor;
+        this.view = view;
     }
 
     public void execute() {

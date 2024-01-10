@@ -1,5 +1,6 @@
 package cs01.controller.javafx;
 
+import cs01.model.BaseJobProcessor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -16,6 +17,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class FxRootController implements Initializable {
+
+    private BaseJobProcessor baseJobProcessor;
+
+    public void setBaseJobProcessor(BaseJobProcessor baseJobProcessor) {
+        this.baseJobProcessor = baseJobProcessor;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,8 +52,12 @@ public class FxRootController implements Initializable {
         dialog.initOwner(primaryStage);
         dialog.setTitle("Binary addition");
 
-        Parent parent = FXMLLoader.load(
+        FXMLLoader loader = new FXMLLoader(
             Objects.requireNonNull(getClass().getResource("/cs01/calculator-view.fxml")));
+        Parent parent = loader.load();
+
+        var controller = (FxCalculatorController) loader.getController();
+        controller.setBaseJobProcessor(baseJobProcessor);
 
         Scene scene = new Scene(parent);
         dialog.setScene(scene);
@@ -60,8 +71,13 @@ public class FxRootController implements Initializable {
         dialog.initOwner(primaryStage);
         dialog.setTitle(type.generateTitle());
 
-        Parent parent = FXMLLoader.load(
+        FXMLLoader loader = new FXMLLoader(
             Objects.requireNonNull(getClass().getResource("/cs01/convertor-view.fxml")));
+        Parent parent = loader.load();
+
+        var controller = (FxConvertorController) loader.getController();
+        controller.setBaseJobProcessor(baseJobProcessor);
+
         Label dialogTitle = (Label) parent.lookup("#dialogTitle");
         dialogTitle.setText(type.generateTitle());
         Label param1Label = (Label) parent.lookup("#param1Label");

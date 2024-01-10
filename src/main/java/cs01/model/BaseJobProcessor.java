@@ -4,6 +4,7 @@ public class BaseJobProcessor {
 
     private final Convertor convertor;
     private final Calculator calculator;
+    private final BaseValidator baseValidator;
 
     private static final String HELP_MESSAGE = "[도움말]" + System.lineSeparator()
         + " - dec2bin <decimal>: 10진수 정수를 2진수로 변환" + System.lineSeparator()
@@ -12,9 +13,11 @@ public class BaseJobProcessor {
         + " - exit: 프로그램 종료" + System.lineSeparator()
         + " * 이진수는 prefix로 0b를 붙여 사용합니다 (e.g. 0b11100)";
 
-    public BaseJobProcessor() {
-        this.convertor = new Convertor();
-        this.calculator = new Calculator();
+    public BaseJobProcessor(Convertor convertor, Calculator calculator,
+        BaseValidator baseValidator) {
+        this.convertor = convertor;
+        this.calculator = calculator;
+        this.baseValidator = baseValidator;
     }
 
     public String callBin2dec(String strBinary) {
@@ -32,6 +35,10 @@ public class BaseJobProcessor {
             convertor.string2bin(strBinary1),
             convertor.string2bin(strBinary2));
         return convertor.bin2String(sumResult);
+    }
+
+    public void callValidateStringBinary(String binaryStr) {
+        baseValidator.validateStringBinary(binaryStr);
     }
 
     public String callHelp() {

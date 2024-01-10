@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class FxConvertorController implements Initializable {
 
-    private final BaseJobProcessor baseJobProcessor = new BaseJobProcessor();
+    private BaseJobProcessor baseJobProcessor;
 
     @FXML
     private VBox rootContainer;
@@ -26,6 +26,10 @@ public class FxConvertorController implements Initializable {
     private TextField result;
     @FXML
     private Label errorMessageLabel;
+
+    public void setBaseJobProcessor(BaseJobProcessor baseJobProcessor) {
+        this.baseJobProcessor = baseJobProcessor;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
